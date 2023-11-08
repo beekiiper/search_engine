@@ -1,0 +1,13 @@
+{
+    "config": 
+    {
+        "name": "FileSearchEngine",
+        "version": "0.1",
+        "max_responses": 5
+    },
+    "files": 
+    [
+        "q:\\search_engine\\resources\\file001.txt",
+        "q:\\search_engine\\resources\\file002.txt"
+    ]
+}
