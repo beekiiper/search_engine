@@ -90,7 +90,7 @@ void ConverterJSON::putAnswers(std::vector<std::vector<std::pair<int, float>>> a
                 }
                 ++requestCount;
             }
-            answersFile << answersDict;
+            answersFile << answersDict.dump(4);
             answersFile.close();
             std::cout << "done\n";
         }
@@ -108,28 +108,34 @@ void ConverterJSON::putAnswers(std::vector<std::vector<std::pair<int, float>>> a
 void ConverterJSON::readConfigFile(std::string path)
 {
     std::ifstream configFile(path);
+
     if (configFile.is_open())
     {
-        nlohmann::json configDictionary;
-        configFile >> configDictionary;
-        applicationName = configDictionary["config"]["name"];
-        applicationVersion = configDictionary["config"]["version"];
-        maxResponses = configDictionary["config"]["max_responses"];
-        resourcesPaths.clear();
-        for (auto f : configDictionary["files"])
-        {
-            resourcesPaths.push_back(f);
-        }
+        try {
+            nlohmann::json configDictionary;
+            configFile >> configDictionary;
+            applicationName = configDictionary["config"]["name"];
+            applicationVersion = configDictionary["config"]["version"];
+            maxResponses = configDictionary["config"]["max_responses"];
+            resourcesPaths.clear();
+            for (auto f: configDictionary["files"]) {
+                resourcesPaths.push_back(f);
+            }
 
-        for (int i = 0; i < HEADER_SPACER; ++i) {std::cout << "=";}
-        std::cout << "[Initialization]";
-        for (int i = 0; i < HEADER_SPACER; ++i) {std::cout << "=";}
-        std::cout << "\n" << applicationName << "\n";
-        std::cout << "Version: " << applicationVersion << "\n";
-        std::cout << "Max responses per request: " << maxResponses << "\n";
-        std::cout << "Files library: " << resourcesPaths.size() << "\n";
-        for (int i = 0; i < LINE_LENGTH; ++i) {std::cout << "-";}
-        std::cout << "\n";
+            for (int i = 0; i < HEADER_SPACER; ++i) { std::cout << "="; }
+            std::cout << "[Initialization]";
+            for (int i = 0; i < HEADER_SPACER; ++i) { std::cout << "="; }
+            std::cout << "\n" << applicationName << "\n";
+            std::cout << "Version: " << applicationVersion << "\n";
+            std::cout << "Max responses per request: " << maxResponses << "\n";
+            std::cout << "Files library: " << resourcesPaths.size() << "\n";
+            for (int i = 0; i < LINE_LENGTH; ++i) { std::cout << "-"; }
+            std::cout << "\n";
+        }
+        catch (const nlohmann::json::exception& e)
+        {
+            std::cout << e.what() << '\n';
+        }
         configFile.close();
     }
     else
