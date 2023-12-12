@@ -24,10 +24,10 @@ public:
     void putAnswers(std::vector<std::vector<std::pair<int, float>>> answers);
 
 //Read config file specified in CONFIG_FILE_PATH
-    void readConfigFile(std::string path = "../config.json");
+    void readConfigFile(std::string path = "config.json");
 
 //Read request file specified in REQUEST_FILE_PATH
-    void readRequestFile(std::string path = "../requests.json");
+    void readRequestFile(std::string path = "requests.json");
 
 //Get maximal responses quantity, which can be returned be Search Server @return maximal responses quantity
     int getMaxResponses() const;
@@ -35,7 +35,7 @@ public:
 private:
     ConverterJSON() = default; // private constructor for singleton realization
     static ConverterJSON* instance;
-    const std::string ANSWERS_FILE_PATH = "../answers.json";
+    const std::string ANSWERS_FILE_PATH = "answers.json";
     std::string applicationName;
     std::string applicationVersion;
     int maxResponses  {5};

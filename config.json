@@ -7,7 +7,7 @@
     },
     "files": 
     [
-        "../resources/file001.txt",
-        "../resources/file002.txt"
+        "resources/file001.txt",
+        "resources/file002.txt"
     ]
 }
