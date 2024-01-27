@@ -6,9 +6,8 @@
             "result": true
         },
         "request1": {
-            "docid": 1,
-            "rank": 1.0,
-            "result": true
+            "relevance": [],
+            "result": false
         }
     }
 }
