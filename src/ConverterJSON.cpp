@@ -3,7 +3,6 @@
 const int LINE_LENGTH = 46;
 const int HEADER_SPACER = 15;
 
-//static members initialization -------------------------
 ConverterJSON* ConverterJSON::instance = nullptr;
 ConverterJSON* ConverterJSON::getInstance()
 {
@@ -41,11 +40,6 @@ std::vector<std::string> ConverterJSON::getTextDocuments()
     }
     std::cout << "Input docs read success: " << resourcesPaths.size() << " files\n";
     return textDocuments;
-}
-
-int ConverterJSON::getResponsesLimit() const
-{
-    return maxResponses;
 }
 
 std::vector<std::string> ConverterJSON::getRequests()
