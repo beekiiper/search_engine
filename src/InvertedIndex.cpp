@@ -2,9 +2,8 @@
 
 const int HEADER_SPACER = 15;
 
-//static members initialization -----------------------------
+//статический элемент
 std::mutex InvertedIndex::mutexIndexMap;
-//-------------------------------------------------------------
 
 void InvertedIndex::updateDocumentBase(const std::vector<std::string>& input_docs)
 {

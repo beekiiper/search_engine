@@ -3,10 +3,7 @@
 #include "InvertedIndex.h"
 #include "SearchServer.h"
 
-/**
- * Write answers to the JSON file answers.json
- * @param [in] allRequestsResults result of search for relevant pages
- */
+//запись ответов в файл
 void writeAnswers(const std::vector<std::vector<RelativeIndex>>& allRequestsResults)
 {
     if (allRequestsResults.empty())
@@ -29,6 +26,9 @@ void writeAnswers(const std::vector<std::vector<RelativeIndex>>& allRequestsResu
     }
     ConverterJSON::getInstance()->putAnswers(allRequestsResultsReadyForJSON);
 }
+
+
+
 
 int main()
 {
