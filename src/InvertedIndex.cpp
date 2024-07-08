@@ -21,11 +21,11 @@ void InvertedIndex::updateDocumentBase(const std::vector<std::string>& input_doc
     for (const auto& content : input_docs)
     {
         // Start indexing thread.
-        thread_vec.push_back(std::thread ([this, &content, docId](){indexTheFile(content, docId);}));
+        thread_vec.emplace_back([this, &content, docId](){indexTheFile(content, docId);});
         ++docId;
     }
-    for (unsigned int i = 0; i < thread_vec.size(); ++i) {
-        thread_vec[i].join();
+    for (auto & i : thread_vec) {
+        i.join();
     }
     indexingIsOngoing = false;
 }
