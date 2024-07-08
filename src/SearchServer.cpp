@@ -104,7 +104,7 @@ std::vector<std::vector<RelativeIndex>> SearchServer::search(const std::vector<s
         std::string wordOrWords = uniqueWords.size() == 1 ? " word: " : " words: ";
 
         // Get absolute relevance and maximal relevance:
-        std::vector<RelativeIndex>* relativeIndexes = new std::vector<RelativeIndex>();
+        auto* relativeIndexes = new std::vector<RelativeIndex>();
         size_t maxAbsoluteRelevance {0};
         for (const auto& docId : documentIds)
         {
