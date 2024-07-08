@@ -47,7 +47,7 @@ std::vector<std::string> ConverterJSON::getRequests()
     return requests;
 }
 
-void ConverterJSON::putAnswers(std::vector<std::vector<std::pair<int, float>>> answers)
+void ConverterJSON::putAnswers(const std::vector<std::vector<std::pair<int, float>>>& answers)
 {
     nlohmann::json answersDict;
     if (!answers.empty())
@@ -99,7 +99,7 @@ void ConverterJSON::putAnswers(std::vector<std::vector<std::pair<int, float>>> a
     }
 }
 
-void ConverterJSON::readConfigFile(std::string path)
+void ConverterJSON::readConfigFile(const std::string& path)
 {
     std::ifstream configFile(path);
 
@@ -112,7 +112,7 @@ void ConverterJSON::readConfigFile(std::string path)
             applicationVersion = configDictionary["config"]["version"];
             maxResponses = configDictionary["config"]["max_responses"];
             resourcesPaths.clear();
-            for (auto f: configDictionary["files"]) {
+            for (const auto& f: configDictionary["files"]) {
                 resourcesPaths.push_back(f);
             }
 
@@ -138,7 +138,7 @@ void ConverterJSON::readConfigFile(std::string path)
     }
 }
 
-void ConverterJSON::readRequestFile(std::string path)
+void ConverterJSON::readRequestFile(const std::string& path)
 {
     std::cout << "Requests reading: ";
     std::ifstream configFile(path);
@@ -147,7 +147,7 @@ void ConverterJSON::readRequestFile(std::string path)
         nlohmann::json requestsDictionary;
         configFile >> requestsDictionary;
         requests.clear();
-        for (auto f : requestsDictionary["requests"])
+        for (const auto& f : requestsDictionary["requests"])
         {
             requests.push_back(f);
         }

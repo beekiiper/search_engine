@@ -9,11 +9,11 @@ class ConverterJSON
 {
 public:
     static ConverterJSON* getInstance();
-    void readConfigFile(std::string path = "config.json");                   // чтение конфигурационный файл
-    void readRequestFile(std::string path = "requests.json");                // чтение файла запросов
+    void readConfigFile(const std::string &path = "config.json");                   // чтение конфигурационный файл
+    void readRequestFile(const std::string& path = "requests.json");                // чтение файла запросов
     std::vector<std::string> getRequests();                                  // получение вектора запросов
     std::vector<std::string> getTextDocuments();                             // для перевода источника в строку
-    void putAnswers(std::vector<std::vector<std::pair<int, float>>> answers);// запись результаты в файл answers.json
+    void putAnswers(const std::vector<std::vector<std::pair<int, float>>>& answers);// запись результаты в файл answers.json
     int getMaxResponses() const;                                             // максимальное количество ответов
 
 private:
